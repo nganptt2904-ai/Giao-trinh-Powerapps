@@ -1003,6 +1003,29 @@
         </div>
       </div>
 
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 20c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6"></path><circle cx="17.5" cy="9" r="2.4"></circle><path d="M15.5 14.2c2.3.3 4 2.2 4 5.8"></path></svg></div>
+        <div class="card-body">
+        <h4>Phân quyền user — 1 mình vs nhiều người</h4>
+        <p><strong>Chỉ mình bạn dùng (hiện tại):</strong> không cần làm gì — tự động có role <strong>System Administrator</strong> (toàn quyền) khi tạo Environment.</p>
+        <p><strong>Có thêm người khác dùng chung (sau này):</strong> phải làm đủ 2 bước, thiếu 1 bước là lỗi refresh/truy cập không rõ nguyên nhân (đúng case bạn của Ngân gặp):</p>
+        <ol style="margin: 6px 0 10px; padding-left: 22px;">
+          <li style="margin-bottom: 6px;"><strong>Add user vào Environment</strong> (Settings → Users + permissions → Users) — không phải chỉ add vào tenant Microsoft 365</li>
+          <li><strong>Gán Security Role</strong> (Manage security roles) — chọn đúng mức quyền, không cấp System Administrator tràn lan</li>
+        </ol>
+        <div class="table-wrap">
+          <table class="decide-table">
+            <thead><tr><th>Security Role</th><th>Dùng khi nào</th></tr></thead>
+            <tbody>
+              <tr><td>System Administrator</td><td class="answer">Toàn quyền — chỉ cấp cho người quản trị thật</td></tr>
+              <tr><td>System Customizer</td><td class="answer">Sửa Table/App, không chỉnh quyền hệ thống</td></tr>
+              <tr><td>Role tùy chỉnh (VD Nhân viên mua hàng)</td><td class="answer">Chỉ xem/nhập dữ liệu đúng phạm vi công việc</td></tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+
       <h3 class="block-label">Đúc kết</h3>
       <div class="table-wrap">
         <table class="decide-table">
@@ -1012,6 +1035,7 @@
             <tr><td>Tạo Environment thế nào?</td><td class="answer">Qua Power Platform Admin Center, Type = Developer</td></tr>
             <tr><td>Tên Environment?</td><td class="answer"><code>PA-Personal-Learning</code></td></tr>
             <tr><td>Currency?</td><td class="answer">VND</td></tr>
+            <tr><td>Phân quyền nhiều người?</td><td class="answer">Add vào Environment + gán Security Role, không chỉ add tenant</td></tr>
           </tbody>
         </table>
       </div>
@@ -1020,6 +1044,7 @@
       <div class="key"><span class="tag">KEY</span><p>Nâng cấp gói Microsoft 365 Personal/Family không bao giờ mở khoá được Power Apps — đây là 2 hệ tài khoản (consumer/business) tách biệt hoàn toàn, không phải vấn đề gói thấp/cao.</p></div>
       <div class="key"><span class="tag">KEY</span><p>Nếu dùng M365 Business trial chỉ để lấy tenant, phải tự đặt lịch nhắc hủy trước ngày hết hạn trial để tránh bị tính phí tự động.</p></div>
       <div class="key"><span class="tag">KEY</span><p>Environment loại "Default" (tự sinh sẵn theo tenant) không có Dataverse và không nên dùng cho hệ thống thật — luôn tạo Environment riêng loại Developer/Sandbox/Production.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Add user vào tenant Microsoft 365 KHÔNG đủ để họ dùng được app/data — phải add thêm vào Environment và gán Security Role riêng, thiếu bước này gây lỗi truy cập khó hiểu.</p></div>
       <div class="key"><span class="tag">KEY</span><p>Nếu chuyển sang thao tác trên tenant công ty, cần quyền Admin để tạo Environment, và cần xác nhận rõ gói Power Apps công ty có Dataverse hay chỉ bản seeded rút gọn.</p></div>
     </section>
 
