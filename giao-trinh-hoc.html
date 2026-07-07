@@ -579,10 +579,22 @@
     color: var(--accent-ink);
     margin-bottom: 8px;
   }
-  .key-company p { margin: 0 0 8px; font-size: 15px; max-width: 62ch; }
-  .key-company ol { margin: 8px 0 0; padding-left: 22px; }
-  .key-company li { margin-bottom: 8px; font-size: 15px; max-width: 60ch; }
-  .key-company li:last-child { margin-bottom: 0; }
+  .key-company p { margin: 0 0 12px; font-size: 15px; max-width: 62ch; }
+  .kc-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+  .kc-row { display: flex; gap: 12px; align-items: flex-start; }
+  .kc-row-icon {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .kc-row-icon svg { width: 18px; height: 18px; stroke: var(--accent-ink); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .kc-row-text { font-size: 15px; max-width: 58ch; padding-top: 6px; }
 
   hr.div {
     border: none;
@@ -967,13 +979,28 @@
       <div class="key-company">
         <span class="tag">NẾU DÙNG TÀI KHOẢN CÔNG TY THAY VÌ CÁ NHÂN</span>
         <p>Sẽ khác ở 5 điểm sau:</p>
-        <ol>
-          <li><strong>Không cần tạo tenant mới</strong> — công ty đã có sẵn tenant Microsoft 365 thật, dùng thẳng email công việc.</li>
-          <li><strong>Không tự tạo Environment tuỳ ý được</strong> — cần quyền Power Platform Admin hoặc Global Admin; nếu không có quyền này, phải xin IT cấp, và họ sẽ thấy Environment mới xuất hiện, có thể cần giải trình lý do.</li>
-          <li><strong>Gói Power Apps kèm M365 Business/E3/E5 thường là bản "seeded" (rút gọn)</strong> — tạo app được trong Default Environment, nối được SharePoint/Excel/Outlook, nhưng không tự tạo Table trong Dataverse được (Dataverse là tính năng premium riêng).</li>
-          <li><strong>Mọi Environment/App tạo trên tenant công ty nằm trong hệ thống công ty thật</strong>, IT nhìn thấy được, chịu chính sách bảo mật của công ty — khác Environment cá nhân này, nơi bạn toàn quyền tự do thử nghiệm.</li>
-          <li>Vì dự án này là <strong>học tập cá nhân, ngoài phạm vi công việc</strong>, nên toàn bộ thực hành vẫn giữ trên tenant cá nhân, không trộn với tài khoản công ty.</li>
-        </ol>
+        <div class="kc-list">
+          <div class="kc-row">
+            <div class="kc-row-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2"></path></svg></div>
+            <div class="kc-row-text"><strong>Không cần tạo tenant mới</strong> — công ty đã có sẵn tenant Microsoft 365 thật, dùng thẳng email công việc.</div>
+          </div>
+          <div class="kc-row">
+            <div class="kc-row-icon"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></div>
+            <div class="kc-row-text"><strong>Không tự tạo Environment tuỳ ý được</strong> — cần quyền Power Platform Admin hoặc Global Admin; nếu không có quyền này, phải xin IT cấp, và họ sẽ thấy Environment mới xuất hiện, có thể cần giải trình lý do.</div>
+          </div>
+          <div class="kc-row">
+            <div class="kc-row-icon"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"></rect><path d="M4 11h16M9 7V4.5a1.5 1.5 0 0 1 3 0V7"></path></svg></div>
+            <div class="kc-row-text"><strong>Gói Power Apps kèm M365 Business/E3/E5 thường là bản "seeded" (rút gọn)</strong> — tạo app được trong Default Environment, nối được SharePoint/Excel/Outlook, nhưng không tự tạo Table trong Dataverse được (Dataverse là tính năng premium riêng).</div>
+          </div>
+          <div class="kc-row">
+            <div class="kc-row-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6Z"></path><path d="m9.5 12 1.8 1.8L14.5 10"></path></svg></div>
+            <div class="kc-row-text"><strong>Mọi Environment/App tạo trên tenant công ty nằm trong hệ thống công ty thật</strong>, IT nhìn thấy được, chịu chính sách bảo mật của công ty — khác Environment cá nhân này, nơi bạn toàn quyền tự do thử nghiệm.</div>
+          </div>
+          <div class="kc-row">
+            <div class="kc-row-icon"><svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"></path><path d="M6 10v9h12v-9"></path><path d="M10 19v-5h4v5"></path></svg></div>
+            <div class="kc-row-text">Vì dự án này là <strong>học tập cá nhân, ngoài phạm vi công việc</strong>, nên toàn bộ thực hành vẫn giữ trên tenant cá nhân, không trộn với tài khoản công ty.</div>
+          </div>
+        </div>
       </div>
 
       <h3 class="block-label">Đúc kết</h3>
