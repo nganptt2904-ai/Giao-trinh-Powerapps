@@ -319,6 +319,7 @@
   }
   .lesson-tile:disabled { opacity: 0.55; cursor: not-allowed; }
   .lesson-tile:disabled:hover { transform: none; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 16px -10px rgba(0,0,0,0.12); border-color: var(--border); }
+  .lesson-tile .card-icon { margin-bottom: 12px; }
   .lesson-top {
     display: flex;
     align-items: center;
@@ -494,6 +495,19 @@
     border-radius: 16px;
     margin-bottom: 10px;
   }
+  .key-icon {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--warn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .key-icon svg { width: 16px; height: 16px; stroke: var(--warn); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .key-text { min-width: 0; }
   .key .tag {
     flex: none;
     font-family: var(--rule-mono);
@@ -742,6 +756,7 @@
       <p class="home-sub">Bấm vào 1 buổi để xem chi tiết Nội dung, Đúc kết và Lưu ý cần nhớ.</p>
       <div class="lesson-grid">
         <button type="button" class="lesson-tile" onclick="showView('buoi-1')">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="15.5" cy="12" r="1.6"></circle></svg></div>
           <div class="lesson-top">
             <span class="buoi-num">Buổi 01</span>
             <span class="lesson-badge done">Đã học</span>
@@ -751,6 +766,7 @@
           <span class="lesson-cta">Xem lại nội dung →</span>
         </button>
         <button type="button" class="lesson-tile" onclick="showView('buoi-2')">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></div>
           <div class="lesson-top">
             <span class="buoi-num">Buổi 02</span>
             <span class="lesson-badge current">Đang học</span>
@@ -760,6 +776,7 @@
           <span class="lesson-cta">Xem nội dung →</span>
         </button>
         <button type="button" class="lesson-tile" onclick="showView('buoi-3')">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="8" height="16" rx="1.5" transform="rotate(-6 7 12)"></rect><circle cx="17" cy="8" r="2.5"></circle><path d="M13 16h9M13 20h6"></path></svg></div>
           <div class="lesson-top">
             <span class="buoi-num">Buổi 03</span>
             <span class="lesson-badge locked">Chưa học</span>
@@ -925,13 +942,13 @@
 
       <h3 class="block-label">Lưu ý — key cần nhớ</h3>
 
-      <div class="key"><span class="tag">KEY</span><p>Environment là ranh giới bảo mật và ranh giới migrate — quyết định cái gì mất, cái gì giữ được khi đổi tenant sau này.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Mỗi Table phải có một cột mã nghiệp vụ riêng làm khóa (ví dụ <code>ContractCode</code>), không dựa vào ID nội bộ hệ thống — ID sẽ đổi khi dựng lại ở tenant khác.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>SharePoint List giới hạn cứng 5000 dòng mỗi view, không nới được — lý do chính để chọn Dataverse cho một hệ thống thật.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Không hard-code Site hoặc Environment URL trong công thức — luôn thao tác qua Data source đã khai báo.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Microsoft 365 Copilot không liên quan đến Power Apps hay Dataverse — không cần mua. "Copilot trong Power Apps Studio" là tính năng AI có sẵn trong sản phẩm, hoàn toàn khác.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>AI Builder credits (nếu dùng tính năng đọc ảnh, PDF tự động...) tính phí riêng, tách biệt khỏi mọi thứ ở trên.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Phân quyền user phải thiết lập từ đầu, không vá sau: khi một người bấm "Refresh" trên file Excel export, hệ thống dùng chính quyền của người đó gọi lại Dataverse — nếu chưa được cấp quyền, refresh lỗi, thường không rõ nguyên nhân.</p></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Environment là ranh giới bảo mật và ranh giới migrate — quyết định cái gì mất, cái gì giữ được khi đổi tenant sau này.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Mỗi Table phải có một cột mã nghiệp vụ riêng làm khóa (ví dụ <code>ContractCode</code>), không dựa vào ID nội bộ hệ thống — ID sẽ đổi khi dựng lại ở tenant khác.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>SharePoint List giới hạn cứng 5000 dòng mỗi view, không nới được — lý do chính để chọn Dataverse cho một hệ thống thật.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Không hard-code Site hoặc Environment URL trong công thức — luôn thao tác qua Data source đã khai báo.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Microsoft 365 Copilot không liên quan đến Power Apps hay Dataverse — không cần mua. "Copilot trong Power Apps Studio" là tính năng AI có sẵn trong sản phẩm, hoàn toàn khác.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>AI Builder credits (nếu dùng tính năng đọc ảnh, PDF tự động...) tính phí riêng, tách biệt khỏi mọi thứ ở trên.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Phân quyền user phải thiết lập từ đầu, không vá sau: khi một người bấm "Refresh" trên file Excel export, hệ thống dùng chính quyền của người đó gọi lại Dataverse — nếu chưa được cấp quyền, refresh lỗi, thường không rõ nguyên nhân.</p></div></div>
     </section>
 
     <hr class="div">
@@ -1053,11 +1070,11 @@
       </div>
 
       <h3 class="block-label">Lưu ý — key cần nhớ</h3>
-      <div class="key"><span class="tag">KEY</span><p>Nâng cấp gói Microsoft 365 Personal/Family không bao giờ mở khoá được Power Apps — đây là 2 hệ tài khoản (consumer/business) tách biệt hoàn toàn, không phải vấn đề gói thấp/cao.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Nếu dùng M365 Business trial chỉ để lấy tenant, phải tự đặt lịch nhắc hủy trước ngày hết hạn trial để tránh bị tính phí tự động.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Environment loại "Default" (tự sinh sẵn theo tenant) không có Dataverse và không nên dùng cho hệ thống thật — luôn tạo Environment riêng loại Developer/Sandbox/Production.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Add user vào tenant Microsoft 365 KHÔNG đủ để họ dùng được app/data — phải add thêm vào Environment và gán Security Role riêng, thiếu bước này gây lỗi truy cập khó hiểu.</p></div>
-      <div class="key"><span class="tag">KEY</span><p>Nếu chuyển sang thao tác trên tenant công ty, cần quyền Admin để tạo Environment, và cần xác nhận rõ gói Power Apps công ty có Dataverse hay chỉ bản seeded rút gọn.</p></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Nâng cấp gói Microsoft 365 Personal/Family không bao giờ mở khoá được Power Apps — đây là 2 hệ tài khoản (consumer/business) tách biệt hoàn toàn, không phải vấn đề gói thấp/cao.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Nếu dùng M365 Business trial chỉ để lấy tenant, phải tự đặt lịch nhắc hủy trước ngày hết hạn trial để tránh bị tính phí tự động.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Environment loại "Default" (tự sinh sẵn theo tenant) không có Dataverse và không nên dùng cho hệ thống thật — luôn tạo Environment riêng loại Developer/Sandbox/Production.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Add user vào tenant Microsoft 365 KHÔNG đủ để họ dùng được app/data — phải add thêm vào Environment và gán Security Role riêng, thiếu bước này gây lỗi truy cập khó hiểu.</p></div></div>
+      <div class="key"><div class="key-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"></path></svg></div><div class="key-text"><span class="tag">KEY</span><p>Nếu chuyển sang thao tác trên tenant công ty, cần quyền Admin để tạo Environment, và cần xác nhận rõ gói Power Apps công ty có Dataverse hay chỉ bản seeded rút gọn.</p></div></div>
     </section>
 
     <hr class="div">
