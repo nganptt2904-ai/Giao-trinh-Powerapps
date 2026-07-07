@@ -1,63 +1,49 @@
 <title>Giáo trình Power Platform</title>
 <style>
   :root {
-    --bg: #faf6f5;
-    --surface: #fffdfc;
-    --text: #4a3f42;
-    --text-muted: #8c7a7e;
-    --text-faint: #c4b4b8;
-    --accent: #cf8fa0;
-    --accent-ink: #a35670;
-    --accent-soft: #f6e9ec;
-    --border: #ecdfe1;
-    --warn: #c9832e;
-    --warn-soft: #fdf1de;
-    --warn-border: #f3ddb0;
-    --decide-soft: #e2f7ec;
-    --decide-border: #bfe8d2;
-    --decide-ink: #2f9463;
+    --bg: #241f21;
+    --surface: #2c2628;
+    --text: #ede4e6;
+    --text-muted: #b3a3a7;
+    --text-faint: #7a6d70;
+    --accent: #dba6b5;
+    --accent-ink: #e8c3cf;
+    --accent-soft: #3a2c30;
+    --border: #443b3e;
+    --warn: #e0a852;
+    --warn-soft: #3a2e17;
+    --warn-border: #5a4726;
+    --decide-soft: #1c2f28;
+    --decide-border: #2d4a3d;
+    --decide-ink: #7fe0c0;
     --rule-serif: Arial, Helvetica, sans-serif;
     --rule-sans: Arial, Helvetica, sans-serif;
     --rule-mono: "Cascadia Mono", "Consolas", "SFMono-Regular", Menlo, monospace;
 
-    --b1: #cf8fa0;
-    --b1-soft: #f6e9ec;
-    --b1-ink: #a35670;
-    --b2: #a99bc4;
-    --b2-soft: #eeebf3;
-    --b2-ink: #6f5f95;
-    --b3: #8fbfa8;
-    --b3-soft: #e9f2ee;
-    --b3-ink: #4d8a6c;
+    --b1: #dba6b5;
+    --b1-soft: #3a2c30;
+    --b1-ink: #e8c3cf;
+    --b2: #b8acd6;
+    --b2-soft: #2f2c3a;
+    --b2-ink: #cfc4ea;
+    --b3: #9fd0ba;
+    --b3-soft: #223530;
+    --b3-ink: #b6e6d1;
+
+    --hs1: #dba6b5;
+    --hs2: #b8acd6;
+    --hs3: #9fd0ba;
+    --hs-line: #211c1e;
+    --hs-dot1: #3a2c30;
+    --hs-dot2: #2f2c3a;
+    --hs-star: #d9b877;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --b1-soft: #3a2c30; --b2-soft: #2f2c3a; --b3-soft: #223530;
-    }
+  :root[data-theme="light"] {
+    --b1-soft: #f6e9ec; --b2-soft: #eeebf3; --b3-soft: #e9f2ee; --b1: #cf8fa0; --b1-ink: #a35670; --b2: #a99bc4; --b2-ink: #6f5f95; --b3: #8fbfa8; --b3-ink: #4d8a6c;
+    --hs1: #c06f88; --hs2: #8875ac; --hs3: #5f9c80; --hs-line: #faf6f5; --hs-dot1: #e8c6d0; --hs-dot2: #d9cdea; --hs-star: #c9962e;
   }
-  :root[data-theme="dark"] { --b1-soft: #3a2c30; --b2-soft: #2f2c3a; --b3-soft: #223530; }
-  :root[data-theme="light"] { --b1-soft: #f6e9ec; --b2-soft: #eeebf3; --b3-soft: #e9f2ee; }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #241f21;
-      --surface: #2c2628;
-      --text: #ede4e6;
-      --text-muted: #b3a3a7;
-      --text-faint: #7a6d70;
-      --accent: #dba6b5;
-      --accent-ink: #e8c3cf;
-      --accent-soft: #3a2c30;
-      --border: #443b3e;
-      --warn: #e0a852;
-      --warn-soft: #3a2e17;
-      --warn-border: #5a4726;
-      --decide-soft: #1c2f28;
-      --decide-border: #2d4a3d;
-      --decide-ink: #7fe0c0;
-    }
-  }
   :root[data-theme="dark"] {
     --bg: #241f21;
     --surface: #2c2628;
@@ -99,9 +85,14 @@
   .hero-band {
     position: relative;
     overflow: hidden;
+    background: #211c1e;
+    color: #f0e2e5;
+    padding: 56px 32px 80px;
+    border-bottom: 1px solid #3a2f33;
+  }
+  :root[data-theme="light"] .hero-band {
     background: #f3e0e4;
     color: #2e2226;
-    padding: 56px 32px 80px;
     border-bottom: 1px solid #e0bcc4;
   }
   .hero-inner {
@@ -115,8 +106,9 @@
     font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #8a3f5c;
+    color: #e8b3c9;
   }
+  :root[data-theme="light"] .hero-eyebrow { color: #8a3f5c; }
   .hero-title {
     font-family: var(--rule-serif);
     font-weight: 700;
@@ -129,8 +121,9 @@
   .hero-sub {
     font-size: 17px;
     max-width: 56ch;
-    color: #5c4750;
+    color: #cbb3ba;
   }
+  :root[data-theme="light"] .hero-sub { color: #5c4750; }
   .hero-shapes {
     position: absolute;
     inset: 0;
@@ -140,6 +133,13 @@
     .hero-title { font-size: 32px; }
     .hero-shapes { opacity: 0.6; }
   }
+  .hs-1 { fill: var(--hs1); }
+  .hs-2 { fill: var(--hs2); }
+  .hs-3 { fill: var(--hs3); }
+  .hs-line { stroke: var(--hs-line); }
+  .hs-dot1 { fill: var(--hs-dot1); }
+  .hs-dot2 { fill: var(--hs-dot2); }
+  .hs-star { fill: var(--hs-star); }
 
   body {
     margin: 0;
@@ -683,27 +683,27 @@
 <section class="hero-band">
   <svg class="hero-shapes" viewBox="0 0 1180 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <!-- Cloud -->
-    <g transform="translate(945,80)" fill="#c06f88" opacity="0.9">
+    <g transform="translate(945,80)" class="hs-1" opacity="0.9">
       <path d="M-45 20a22 22 0 0 1 6-43 28 28 0 0 1 52-10 24 24 0 0 1 7 47Z"></path>
     </g>
     <!-- App window -->
     <g transform="translate(1030,160) rotate(-4)" opacity="0.95">
-      <rect x="-40" y="-28" width="80" height="56" rx="10" fill="#8875ac"></rect>
-      <circle cx="-28" cy="-15" r="3" fill="#faf6f5"></circle>
-      <circle cx="-18" cy="-15" r="3" fill="#faf6f5"></circle>
-      <rect x="-30" y="-2" width="60" height="6" rx="3" fill="#faf6f5"></rect>
-      <rect x="-30" y="10" width="38" height="6" rx="3" fill="#faf6f5"></rect>
+      <rect x="-40" y="-28" width="80" height="56" rx="10" class="hs-2"></rect>
+      <circle cx="-28" cy="-15" r="3" class="hs-line" fill="var(--hs-line)"></circle>
+      <circle cx="-18" cy="-15" r="3" class="hs-line" fill="var(--hs-line)"></circle>
+      <rect x="-30" y="-2" width="60" height="6" rx="3" class="hs-line" fill="var(--hs-line)"></rect>
+      <rect x="-30" y="10" width="38" height="6" rx="3" class="hs-line" fill="var(--hs-line)"></rect>
     </g>
     <!-- Database cylinder -->
     <g transform="translate(825,215) rotate(6)" opacity="0.95">
-      <path d="M-28-18c0-6 12.5-11 28-11s28 5 28 11v36c0 6-12.5 11-28 11s-28-5-28-11Z" fill="#5f9c80"></path>
-      <path d="M-28-18c0 6 12.5 11 28 11s28-5 28-11" fill="none" stroke="#faf6f5" stroke-width="3"></path>
-      <path d="M-28 0c0 6 12.5 11 28 11s28-5 28-11" fill="none" stroke="#faf6f5" stroke-width="3"></path>
+      <path d="M-28-18c0-6 12.5-11 28-11s28 5 28 11v36c0 6-12.5 11-28 11s-28-5-28-11Z" class="hs-3"></path>
+      <path d="M-28-18c0 6 12.5 11 28 11s28-5 28-11" fill="none" class="hs-line" stroke-width="3"></path>
+      <path d="M-28 0c0 6 12.5 11 28 11s28-5 28-11" fill="none" class="hs-line" stroke-width="3"></path>
     </g>
-    <circle cx="1090" cy="55" r="16" fill="#e8c6d0" opacity="0.9"></circle>
-    <circle cx="965" cy="235" r="10" fill="#d9cdea" opacity="0.9"></circle>
-    <path d="M1005 45 C1008 55 1008 55 1018 58 C1008 61 1008 61 1005 71 C1002 61 1002 61 992 58 C1002 55 1002 55 1005 45Z" fill="#c9962e" opacity="0.9"></path>
-    <path d="M900 165 C902 171 902 171 908 173 C902 175 902 175 900 181 C898 175 898 175 892 173 C898 171 898 171 900 165Z" fill="#c06f88" opacity="0.85"></path>
+    <circle cx="1090" cy="55" r="16" class="hs-dot1" opacity="0.9"></circle>
+    <circle cx="965" cy="235" r="10" class="hs-dot2" opacity="0.9"></circle>
+    <path d="M1005 45 C1008 55 1008 55 1018 58 C1008 61 1008 61 1005 71 C1002 61 1002 61 992 58 C1002 55 1002 55 1005 45Z" class="hs-star" opacity="0.9"></path>
+    <path d="M900 165 C902 171 902 171 908 173 C902 175 902 175 900 181 C898 175 898 175 892 173 C898 171 898 171 900 165Z" class="hs-1" opacity="0.85"></path>
   </svg>
   <div class="hero-inner">
     <div class="hero-eyebrow">Giáo trình — Ngân</div>
