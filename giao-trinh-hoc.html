@@ -1,88 +1,152 @@
 <title>Giáo trình Power Platform</title>
 <style>
   :root {
-    --bg: #f5f4f1;
-    --surface: #ffffff;
-    --text: #1d2024;
-    --text-muted: #62676e;
-    --text-faint: #9297a0;
-    --accent: #5b4ee0;
-    --accent-ink: #443aad;
-    --accent-soft: #edebfb;
-    --border: #e2e0da;
-    --warn: #a15a0a;
-    --warn-soft: #faf0dc;
-    --warn-border: #edd9ab;
-    --decide-soft: #eef3ef;
-    --decide-border: #cfe0d4;
-    --decide-ink: #2f6b46;
-    --rule-serif: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-    --rule-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --bg: #faf6f5;
+    --surface: #fffdfc;
+    --text: #4a3f42;
+    --text-muted: #8c7a7e;
+    --text-faint: #c4b4b8;
+    --accent: #cf8fa0;
+    --accent-ink: #a35670;
+    --accent-soft: #f6e9ec;
+    --border: #ecdfe1;
+    --warn: #c9832e;
+    --warn-soft: #fdf1de;
+    --warn-border: #f3ddb0;
+    --decide-soft: #e2f7ec;
+    --decide-border: #bfe8d2;
+    --decide-ink: #2f9463;
+    --rule-serif: Arial, Helvetica, sans-serif;
+    --rule-sans: Arial, Helvetica, sans-serif;
     --rule-mono: "Cascadia Mono", "Consolas", "SFMono-Regular", Menlo, monospace;
+
+    --b1: #cf8fa0;
+    --b1-soft: #f6e9ec;
+    --b1-ink: #a35670;
+    --b2: #a99bc4;
+    --b2-soft: #eeebf3;
+    --b2-ink: #6f5f95;
+    --b3: #8fbfa8;
+    --b3-soft: #e9f2ee;
+    --b3-ink: #4d8a6c;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #17181b;
-      --surface: #1f2125;
-      --text: #e7e6e2;
-      --text-muted: #a2a6ab;
-      --text-faint: #6d7278;
-      --accent: #9b90ff;
-      --accent-ink: #c4bcff;
-      --accent-soft: #26243d;
-      --border: #313339;
+      --b1-soft: #3a2c30; --b2-soft: #2f2c3a; --b3-soft: #223530;
+    }
+  }
+  :root[data-theme="dark"] { --b1-soft: #3a2c30; --b2-soft: #2f2c3a; --b3-soft: #223530; }
+  :root[data-theme="light"] { --b1-soft: #f6e9ec; --b2-soft: #eeebf3; --b3-soft: #e9f2ee; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #241f21;
+      --surface: #2c2628;
+      --text: #ede4e6;
+      --text-muted: #b3a3a7;
+      --text-faint: #7a6d70;
+      --accent: #dba6b5;
+      --accent-ink: #e8c3cf;
+      --accent-soft: #3a2c30;
+      --border: #443b3e;
       --warn: #e0a852;
-      --warn-soft: #2e2717;
-      --warn-border: #4a3c1f;
-      --decide-soft: #1c2b21;
-      --decide-border: #2d4536;
-      --decide-ink: #7fcf9a;
+      --warn-soft: #3a2e17;
+      --warn-border: #5a4726;
+      --decide-soft: #1c2f28;
+      --decide-border: #2d4a3d;
+      --decide-ink: #7fe0c0;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #17181b;
-    --surface: #1f2125;
-    --text: #e7e6e2;
-    --text-muted: #a2a6ab;
-    --text-faint: #6d7278;
-    --accent: #9b90ff;
-    --accent-ink: #c4bcff;
-    --accent-soft: #26243d;
-    --border: #313339;
+    --bg: #241f21;
+    --surface: #2c2628;
+    --text: #ede4e6;
+    --text-muted: #b3a3a7;
+    --text-faint: #7a6d70;
+    --accent: #dba6b5;
+    --accent-ink: #e8c3cf;
+    --accent-soft: #3a2c30;
+    --border: #443b3e;
     --warn: #e0a852;
-    --warn-soft: #2e2717;
-    --warn-border: #4a3c1f;
-    --decide-soft: #1c2b21;
-    --decide-border: #2d4536;
-    --decide-ink: #7fcf9a;
+    --warn-soft: #3a2e17;
+    --warn-border: #5a4726;
+    --decide-soft: #1c2f28;
+    --decide-border: #2d4a3d;
+    --decide-ink: #7fe0c0;
   }
   :root[data-theme="light"] {
-    --bg: #f5f4f1;
-    --surface: #ffffff;
-    --text: #1d2024;
-    --text-muted: #62676e;
-    --text-faint: #9297a0;
-    --accent: #5b4ee0;
-    --accent-ink: #443aad;
-    --accent-soft: #edebfb;
-    --border: #e2e0da;
-    --warn: #a15a0a;
-    --warn-soft: #faf0dc;
-    --warn-border: #edd9ab;
-    --decide-soft: #eef3ef;
-    --decide-border: #cfe0d4;
-    --decide-ink: #2f6b46;
+    --bg: #faf6f5;
+    --surface: #fffdfc;
+    --text: #4a3f42;
+    --text-muted: #8c7a7e;
+    --text-faint: #c4b4b8;
+    --accent: #cf8fa0;
+    --accent-ink: #a35670;
+    --accent-soft: #f6e9ec;
+    --border: #ecdfe1;
+    --warn: #c9832e;
+    --warn-soft: #fdf1de;
+    --warn-border: #f3ddb0;
+    --decide-soft: #e2f7ec;
+    --decide-border: #bfe8d2;
+    --decide-ink: #2f9463;
   }
 
   * { box-sizing: border-box; }
+
+  /* ---- Hero band ---- */
+  .hero-band {
+    position: relative;
+    overflow: hidden;
+    background: #f3e0e4;
+    color: #2e2226;
+    padding: 56px 32px 80px;
+    border-bottom: 1px solid #e0bcc4;
+  }
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--rule-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a3f5c;
+  }
+  .hero-title {
+    font-family: var(--rule-serif);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 12px 0 14px;
+    text-wrap: balance;
+    max-width: 16ch;
+  }
+  .hero-sub {
+    font-size: 17px;
+    max-width: 56ch;
+    color: #5c4750;
+  }
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  @media (max-width: 880px) {
+    .hero-title { font-size: 32px; }
+    .hero-shapes { opacity: 0.6; }
+  }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: var(--rule-sans);
-    font-size: 16.5px;
+    font-size: 16px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
@@ -113,7 +177,7 @@
 
   .toc-kicker {
     font-family: var(--rule-mono);
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.11em;
     text-transform: uppercase;
     color: var(--text-faint);
@@ -122,7 +186,7 @@
   .toc-title {
     font-family: var(--rule-serif);
     font-weight: 700;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.25;
     margin: 4px 0 0;
     text-wrap: balance;
@@ -195,6 +259,97 @@
   section.buoi {
     margin-bottom: 64px;
     scroll-margin-top: 32px;
+    display: none;
+  }
+  section.buoi.active { display: block; }
+  #home { display: none; }
+  #home.active { display: block; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 18px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+  }
+  .back-link:hover { color: var(--accent-ink); }
+
+  /* ---- Home lesson tiles ---- */
+  .home-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .home-sub {
+    color: var(--text-muted);
+    margin: 0 0 28px;
+    max-width: 60ch;
+  }
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .lesson-tile {
+    display: block;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 22px;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 16px -10px rgba(0,0,0,0.12);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  @media (hover: hover) {
+    .lesson-tile:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 16px 30px -14px rgba(0,0,0,0.2);
+    }
+  }
+  .lesson-tile:disabled { opacity: 0.55; cursor: not-allowed; }
+  .lesson-tile:disabled:hover { transform: none; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 16px -10px rgba(0,0,0,0.12); border-color: var(--border); }
+  .lesson-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .lesson-badge {
+    font-family: var(--rule-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .lesson-badge.done { background: var(--decide-soft); color: var(--decide-ink); }
+  .lesson-badge.current { background: var(--accent-soft); color: var(--accent-ink); }
+  .lesson-badge.locked { background: var(--border); color: var(--text-faint); }
+  .lesson-tile h3 {
+    font-size: 19px;
+    margin: 0 0 6px;
+  }
+  .lesson-tile p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+    max-width: none;
+  }
+  .lesson-cta {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-ink);
   }
 
   .buoi-head {
@@ -205,18 +360,32 @@
   }
   .buoi-num {
     font-family: var(--rule-serif);
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--accent);
-    border: 1px solid var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    background: var(--accent);
     border-radius: 999px;
-    padding: 3px 13px;
+    padding: 4px 15px;
     white-space: nowrap;
   }
+  #buoi-1 .buoi-num { background: var(--b1); }
+  #buoi-1 .card h4::before { background: var(--b1); }
+  #buoi-1 .decide-table { background: var(--b1-soft); border-color: var(--b1); }
+  #buoi-1 .decide-table th, #buoi-1 .decide-table td.answer { color: var(--b1-ink); }
+
+  #buoi-2 .buoi-num { background: var(--b2); }
+  #buoi-2 .card h4::before { background: var(--b2); }
+  #buoi-2 .decide-table { background: var(--b2-soft); border-color: var(--b2); }
+  #buoi-2 .decide-table th, #buoi-2 .decide-table td.answer { color: var(--b2-ink); }
+  #buoi-2 .key-company { background: var(--b2-soft); border-color: var(--b2); }
+  #buoi-2 .key-company .tag { color: var(--b2-ink); }
+
+  #buoi-3 .buoi-num { background: var(--b3); }
+  #buoi-3 .card h4::before { background: var(--b3); }
   .buoi-head h2 {
     font-family: var(--rule-serif);
     font-weight: 700;
-    font-size: 27px;
+    font-size: 28px;
     margin: 0;
     text-wrap: balance;
   }
@@ -233,20 +402,51 @@
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 20px 24px;
     margin-bottom: 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 16px -10px rgba(0,0,0,0.12);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
   }
+  @media (hover: hover) {
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 14px 28px -14px rgba(0,0,0,0.18);
+    }
+  }
+  .card-icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-icon svg { width: 26px; height: 26px; stroke: var(--accent-ink); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .card-body { min-width: 0; flex: 1; }
   .card h4 {
-    font-size: 16px;
+    font-size: 21px;
     margin: 0 0 8px;
     font-weight: 700;
   }
+  #buoi-1 .card-icon { background: var(--b1-soft); }
+  #buoi-1 .card-icon svg { stroke: var(--b1-ink); }
+  #buoi-2 .card-icon { background: var(--b2-soft); }
+  #buoi-2 .card-icon svg { stroke: var(--b2-ink); }
+  #buoi-3 .card-icon { background: var(--b3-soft); }
+  #buoi-3 .card-icon svg { stroke: var(--b3-ink); }
   .card p { margin: 0; color: var(--text); }
   .card p + p { margin-top: 8px; }
 
-  p { max-width: 68ch; }
+  p { max-width: 68ch; overflow-wrap: break-word; word-break: break-word; }
   .card p, .card li { max-width: 62ch; }
+  code { overflow-wrap: break-word; word-break: break-word; }
 
   code {
     font-family: var(--rule-mono);
@@ -263,7 +463,7 @@
     border-collapse: collapse;
     background: var(--decide-soft);
     border: 1px solid var(--decide-border);
-    border-radius: 10px;
+    border-radius: 18px;
     overflow: hidden;
     font-size: 15px;
   }
@@ -290,8 +490,8 @@
     padding: 14px 18px;
     background: var(--warn-soft);
     border: 1px solid var(--warn-border);
-    border-left: 3px solid var(--warn);
-    border-radius: 8px;
+    border-left: 4px solid var(--warn);
+    border-radius: 16px;
     margin-bottom: 10px;
   }
   .key .tag {
@@ -309,7 +509,7 @@
     font-style: italic;
     color: var(--text-faint);
     border: 1px dashed var(--border);
-    border-radius: 10px;
+    border-radius: 18px;
     padding: 18px 22px;
   }
 
@@ -320,7 +520,7 @@
   .diagram-frame {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 18px;
     padding: 14px 16px 10px;
     overflow-x: auto;
   }
@@ -360,10 +560,83 @@
     fill: var(--warn);
   }
 
+  /* ---- Company-account callout ---- */
+  .key-company {
+    padding: 16px 20px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-left: 4px solid var(--accent);
+    border-radius: 16px;
+    margin-bottom: 14px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .key-company .tag {
+    display: inline-block;
+    font-family: var(--rule-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    color: var(--accent-ink);
+    margin-bottom: 8px;
+  }
+  .key-company p { margin: 0 0 8px; font-size: 15px; max-width: 62ch; }
+  .key-company ol { margin: 8px 0 0; padding-left: 22px; }
+  .key-company li { margin-bottom: 8px; font-size: 15px; max-width: 60ch; }
+  .key-company li:last-child { margin-bottom: 0; }
+
   hr.div {
     border: none;
     border-top: 1px solid var(--border);
     margin: 40px 0;
+  }
+
+  /* ---- Progress stepper ---- */
+  .stepper {
+    display: flex;
+    align-items: center;
+    margin: 22px 0 8px;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .step-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--rule-mono);
+    font-size: 13px;
+    font-weight: 700;
+    flex: none;
+    border: 2px solid rgba(46,34,38,0.25);
+    color: rgba(46,34,38,0.6);
+    background: rgba(255,255,255,0.6);
+  }
+  .step.done .step-dot { background: #4d8a6c; border-color: #4d8a6c; color: #fff; }
+  .step.current .step-dot { background: #a35670; border-color: #a35670; color: #fff; }
+  .step-label {
+    font-size: 13.5px;
+    color: rgba(46,34,38,0.55);
+    white-space: nowrap;
+  }
+  .step.current .step-label, .step.done .step-label { color: #2e2226; font-weight: 700; }
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background: rgba(46,34,38,0.18);
+    margin: 0 12px;
+    min-width: 24px;
+  }
+  .step-line.done { background: #4d8a6c; }
+  @media (max-width: 620px) {
+    .step-label { display: none; }
+    .step-line { margin: 0 6px; }
   }
 
   footer {
@@ -395,6 +668,45 @@
   </defs>
 </svg>
 
+<section class="hero-band">
+  <svg class="hero-shapes" viewBox="0 0 1180 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- Cloud -->
+    <g transform="translate(945,80)" fill="#c06f88" opacity="0.9">
+      <path d="M-45 20a22 22 0 0 1 6-43 28 28 0 0 1 52-10 24 24 0 0 1 7 47Z"></path>
+    </g>
+    <!-- App window -->
+    <g transform="translate(1030,160) rotate(-4)" opacity="0.95">
+      <rect x="-40" y="-28" width="80" height="56" rx="10" fill="#8875ac"></rect>
+      <circle cx="-28" cy="-15" r="3" fill="#faf6f5"></circle>
+      <circle cx="-18" cy="-15" r="3" fill="#faf6f5"></circle>
+      <rect x="-30" y="-2" width="60" height="6" rx="3" fill="#faf6f5"></rect>
+      <rect x="-30" y="10" width="38" height="6" rx="3" fill="#faf6f5"></rect>
+    </g>
+    <!-- Database cylinder -->
+    <g transform="translate(825,215) rotate(6)" opacity="0.95">
+      <path d="M-28-18c0-6 12.5-11 28-11s28 5 28 11v36c0 6-12.5 11-28 11s-28-5-28-11Z" fill="#5f9c80"></path>
+      <path d="M-28-18c0 6 12.5 11 28 11s28-5 28-11" fill="none" stroke="#faf6f5" stroke-width="3"></path>
+      <path d="M-28 0c0 6 12.5 11 28 11s28-5 28-11" fill="none" stroke="#faf6f5" stroke-width="3"></path>
+    </g>
+    <circle cx="1090" cy="55" r="16" fill="#e8c6d0" opacity="0.9"></circle>
+    <circle cx="965" cy="235" r="10" fill="#d9cdea" opacity="0.9"></circle>
+    <path d="M1005 45 C1008 55 1008 55 1018 58 C1008 61 1008 61 1005 71 C1002 61 1002 61 992 58 C1002 55 1002 55 1005 45Z" fill="#c9962e" opacity="0.9"></path>
+    <path d="M900 165 C902 171 902 171 908 173 C902 175 902 175 900 181 C898 175 898 175 892 173 C898 171 898 171 900 165Z" fill="#c06f88" opacity="0.85"></path>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Giáo trình — Ngân</div>
+    <h1 class="hero-title">Power Platform, từ số 0 đến hệ thống thật</h1>
+    <p class="hero-sub">Không cần biết gì trước — đi từng bước một, mỗi buổi gồm ba phần: Nội dung, Đúc kết, và Lưu ý cần nhớ. Tài liệu này để đọc lại/ôn tập, tách riêng khỏi BRIEF.md (dùng theo dõi tiến độ dự án).</p>
+    <nav class="stepper" aria-label="Tiến độ học">
+      <a href="#buoi-1" class="step done" onclick="showView('buoi-1');return false;"><span class="step-dot">✓</span><span class="step-label">Khái niệm nền</span></a>
+      <span class="step-line done"></span>
+      <a href="#buoi-2" class="step current" onclick="showView('buoi-2');return false;"><span class="step-dot">02</span><span class="step-label">Thiết lập nền tảng</span></a>
+      <span class="step-line"></span>
+      <a href="#buoi-3" class="step" onclick="showView('buoi-3');return false;"><span class="step-dot">03</span><span class="step-label">Dựng App 1</span></a>
+    </nav>
+  </div>
+</section>
+
 <div class="shell">
   <nav class="toc">
     <div>
@@ -402,9 +714,9 @@
       <p class="toc-title">Power Platform<br>cho người xây hệ thống</p>
     </div>
     <ul class="toc-list">
-      <li><a href="#buoi-1"><span class="num">01</span>Khái niệm nền</a></li>
-      <li><a href="#buoi-2"><span class="num">02</span>Thiết lập nền tảng<span class="pending"> — chưa học</span></a></li>
-      <li><a href="#buoi-3"><span class="num">03</span>Dựng App 1<span class="pending"> — chưa học</span></a></li>
+      <li><a href="#buoi-1" onclick="showView('buoi-1');return false;"><span class="num">01</span>Khái niệm nền</a></li>
+      <li><a href="#buoi-2" onclick="showView('buoi-2');return false;"><span class="num">02</span>Thiết lập nền tảng</a></li>
+      <li><a href="#buoi-3" onclick="showView('buoi-3');return false;"><span class="num">03</span>Dựng App 1<span class="pending"> — chưa học</span></a></li>
     </ul>
     <div class="toc-meta">
       <strong>Định hướng đã chốt:</strong> Canvas app + Dataverse (Developer Plan, miễn phí) + Power Automate cho logic. Timeline 7 ngày.
@@ -412,13 +724,43 @@
   </nav>
 
   <main>
-    <header class="doc-header">
-      <div class="doc-kicker">Giáo trình — Ngân</div>
-      <h1 class="doc-title">Power Platform, từ số 0 đến hệ thống thật</h1>
-      <p class="doc-sub">Tài liệu đọc lại/ôn tập — tách riêng khỏi BRIEF.md (dùng để theo dõi tiến độ dự án). Mỗi buổi gồm ba phần: Nội dung, Đúc kết, và Lưu ý cần nhớ.</p>
-    </header>
+
+    <section id="home" class="active">
+      <h2 class="home-title">Chọn buổi học</h2>
+      <p class="home-sub">Bấm vào 1 buổi để xem chi tiết Nội dung, Đúc kết và Lưu ý cần nhớ.</p>
+      <div class="lesson-grid">
+        <button type="button" class="lesson-tile" onclick="showView('buoi-1')">
+          <div class="lesson-top">
+            <span class="buoi-num">Buổi 01</span>
+            <span class="lesson-badge done">Đã học</span>
+          </div>
+          <h3>Khái niệm nền</h3>
+          <p>Environment, Canvas vs Model-driven, SharePoint List vs Dataverse, Power Automate.</p>
+          <span class="lesson-cta">Xem lại nội dung →</span>
+        </button>
+        <button type="button" class="lesson-tile" onclick="showView('buoi-2')">
+          <div class="lesson-top">
+            <span class="buoi-num">Buổi 02</span>
+            <span class="lesson-badge current">Đang học</span>
+          </div>
+          <h3>Thiết lập nền tảng</h3>
+          <p>Tạo tài khoản work account, tenant, Environment và Dataverse thật qua Power Platform Admin Center.</p>
+          <span class="lesson-cta">Xem nội dung →</span>
+        </button>
+        <button type="button" class="lesson-tile" onclick="showView('buoi-3')">
+          <div class="lesson-top">
+            <span class="buoi-num">Buổi 03</span>
+            <span class="lesson-badge locked">Chưa học</span>
+          </div>
+          <h3>Dựng App 1</h3>
+          <p>Thực hành dựng khung App quản lý hợp đồng mua hàng trên Canvas app.</p>
+          <span class="lesson-cta">Xem nội dung →</span>
+        </button>
+      </div>
+    </section>
 
     <section class="buoi" id="buoi-1">
+      <button type="button" class="back-link" onclick="showView('home')">← Quay lại danh sách buổi học</button>
       <div class="buoi-head">
         <span class="buoi-num">Buổi 01</span>
         <h2>Khái niệm nền</h2>
@@ -427,6 +769,8 @@
       <h3 class="block-label">Nội dung</h3>
 
       <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="15.5" cy="12" r="1.6"></circle></svg></div>
+        <div class="card-body">
         <h4>Environment</h4>
         <p>Một "hộp" độc lập chứa Apps, Flows, kết nối, và dữ liệu (nếu dùng Dataverse) — giống một database instance riêng biệt, tách biệt với các project khác.</p>
         <div class="diagram">
@@ -447,9 +791,12 @@
           </div>
           <p class="diagram-cap">Viền nét đứt = ranh giới Environment. Đổi tenant nghĩa là phải dựng lại cả 3 khối bên trong ở một hộp mới.</p>
         </div>
+        </div>
       </div>
 
       <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="8" height="16" rx="1.5" transform="rotate(-6 7 12)"></rect><circle cx="17" cy="8" r="2.5"></circle><path d="M13 16h9M13 20h6"></path></svg></div>
+        <div class="card-body">
         <h4>Canvas app so với Model-driven app</h4>
         <p><strong>Canvas:</strong> tự kéo-thả, toàn quyền layout và màu sắc — như tự viết HTML/CSS.</p>
         <p><strong>Model-driven:</strong> định nghĩa data trước, giao diện tự sinh theo khuôn mẫu có sẵn — nhanh nhưng không tự do về hình thức.</p>
@@ -473,9 +820,12 @@
           </div>
           <p class="diagram-cap">Canvas: mỗi phần tử đặt tự do theo ý muốn. Model-driven: hàng nào cũng đồng dạng, sinh tự động từ schema — không chỉnh được vị trí riêng lẻ.</p>
         </div>
+        </div>
       </div>
 
       <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Z"></path><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"></path><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg></div>
+        <div class="card-body">
         <h4>SharePoint List so với Dataverse</h4>
         <p><strong>List:</strong> giống một sheet Excel có kiểu cột cố định. Giới hạn: 5000 dòng mỗi view, không JOIN thật giữa các bảng, không ràng buộc toàn vẹn dữ liệu.</p>
         <p><strong>Dataverse:</strong> database quan hệ thật — có relationship, cascade rule, business rule tập trung một nơi, không có trần số dòng cứng. Cần license riêng, hoặc dùng Developer Plan miễn phí cho quy mô cá nhân.</p>
@@ -506,9 +856,12 @@
           </div>
           <p class="diagram-cap">List: hai bảng chỉ nối bằng con số ID tham chiếu rời — xóa gốc thì bảng con vẫn trỏ tới ID đã chết. Dataverse: quan hệ thật, xóa/khóa được cấu hình cascade theo ý muốn.</p>
         </div>
+        </div>
       </div>
 
       <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.2"></path><path d="M14 4h4v4"></path><path d="M20 12a8 8 0 0 1-14 5.2"></path><path d="M10 20H6v-4"></path></svg></div>
+        <div class="card-body">
         <h4>Power Automate và Connector</h4>
         <p>Power Apps là tầng giao diện. Power Automate là tầng logic — xử lý sự kiện, tính toán, gửi thông báo, phê duyệt. Connector là "driver" kết nối tới một nguồn dữ liệu hoặc dịch vụ.</p>
         <p>Nguyên tắc áp dụng: mọi tính toán hoặc điều kiện phức tạp đặt trong Flow, không nhồi vào công thức của Power Apps.</p>
@@ -542,6 +895,7 @@
           </div>
           <p class="diagram-cap">Tách lớp: Power Apps chỉ hiển thị, Power Automate xử lý logic, Connector là cầu nối kỹ thuật tới Dataverse.</p>
         </div>
+        </div>
       </div>
 
       <h3 class="block-label">Đúc kết</h3>
@@ -571,16 +925,81 @@
     <hr class="div">
 
     <section class="buoi" id="buoi-2">
+      <button type="button" class="back-link" onclick="showView('home')">← Quay lại danh sách buổi học</button>
       <div class="buoi-head">
         <span class="buoi-num">Buổi 02</span>
         <h2>Thiết lập nền tảng</h2>
       </div>
-      <p class="empty">Chưa học — sẽ điền Nội dung / Đúc kết / Lưu ý sau khi hoàn thành buổi này.</p>
+
+      <h3 class="block-label">Nội dung</h3>
+
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 6 8 7 8-7"></path><path d="M4 18 9 12M20 18l-5-6"></path></svg></div>
+        <div class="card-body">
+        <h4>Vì sao gmail cá nhân không đăng ký được Power Apps</h4>
+        <p>Power Apps Developer Plan chỉ chấp nhận "work or school account" (tài khoản tổ chức) — gmail/outlook cá nhân thuộc hệ <strong>consumer</strong>, bị từ chối ngay ở bước nhập email dù có nâng cấp gói Microsoft 365 Personal/Family cỡ nào cũng không giải quyết được, vì đây là hai hệ tài khoản tách biệt hoàn toàn (consumer vs business tenant), không phải vấn đề "gói thấp/gói cao".</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.4 3.2 7.7 8 9 4.8-1.3 8-4.6 8-9V6l-8-3Z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+        <div class="card-body">
+        <h4>Cách tạo một "work account" hợp lệ mà không cần công ty thật</h4>
+        <p>Đăng ký dùng thử <strong>Microsoft 365 Business Basic</strong> (30 ngày, có thể cần nhập thẻ tín dụng) để Microsoft tự sinh cho mình 1 tenant mới dạng <code>xxx.onmicrosoft.com</code> — đây chính là "work account" cần dùng, tách biệt hoàn toàn với gmail cá nhân và với tenant công ty thật.</p>
+        <p>Trong lúc đăng ký, hệ thống có thể yêu cầu <strong>mã số thuế (TIN)</strong> để xuất hoá đơn theo quy định Việt Nam — dùng mã số thuế cá nhân nếu có.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"></path></svg></div>
+        <div class="card-body">
+        <h4>Tạo Environment thật qua Power Platform Admin Center</h4>
+        <p>Luồng đăng ký công khai đôi khi báo lỗi mơ hồ ("bạn chưa đủ điều kiện") dù tài khoản hợp lệ — không cần cố sửa, có lối đi tắt chắc chắn hơn nhiều: dùng thẳng quyền Global Admin để tự tạo Environment, bỏ qua luồng đăng ký công khai.</p>
+        <ol style="margin: 10px 0 4px; padding-left: 22px;">
+          <li style="margin-bottom: 6px;">Vào <strong>admin.powerplatform.microsoft.com</strong> (Power Platform Admin Center)</li>
+          <li style="margin-bottom: 6px;"><strong>Environments (Môi trường) → New (Mới)</strong></li>
+          <li style="margin-bottom: 6px;">Type chọn <strong>Developer</strong> — miễn phí, không giới hạn thời gian, tự động kèm Dataverse</li>
+          <li>Tên theo naming convention: <code>PA-Personal-Learning</code>, Currency: <strong>VND</strong></li>
+        </ol>
+        </div>
+      </div>
+
+      <div class="key-company">
+        <span class="tag">NẾU DÙNG TÀI KHOẢN CÔNG TY THAY VÌ CÁ NHÂN</span>
+        <p>Sẽ khác ở 5 điểm sau:</p>
+        <ol>
+          <li><strong>Không cần tạo tenant mới</strong> — công ty đã có sẵn tenant Microsoft 365 thật, dùng thẳng email công việc.</li>
+          <li><strong>Không tự tạo Environment tuỳ ý được</strong> — cần quyền Power Platform Admin hoặc Global Admin; nếu không có quyền này, phải xin IT cấp, và họ sẽ thấy Environment mới xuất hiện, có thể cần giải trình lý do.</li>
+          <li><strong>Gói Power Apps kèm M365 Business/E3/E5 thường là bản "seeded" (rút gọn)</strong> — tạo app được trong Default Environment, nối được SharePoint/Excel/Outlook, nhưng không tự tạo Table trong Dataverse được (Dataverse là tính năng premium riêng).</li>
+          <li><strong>Mọi Environment/App tạo trên tenant công ty nằm trong hệ thống công ty thật</strong>, IT nhìn thấy được, chịu chính sách bảo mật của công ty — khác Environment cá nhân này, nơi bạn toàn quyền tự do thử nghiệm.</li>
+          <li>Vì dự án này là <strong>học tập cá nhân, ngoài phạm vi công việc</strong>, nên toàn bộ thực hành vẫn giữ trên tenant cá nhân, không trộn với tài khoản công ty.</li>
+        </ol>
+      </div>
+
+      <h3 class="block-label">Đúc kết</h3>
+      <div class="table-wrap">
+        <table class="decide-table">
+          <thead><tr><th>Câu hỏi</th><th>Quyết định</th></tr></thead>
+          <tbody>
+            <tr><td>Dùng tài khoản nào?</td><td class="answer">Tenant riêng mới (.onmicrosoft.com), không dùng gmail, không dùng tài khoản công ty</td></tr>
+            <tr><td>Tạo Environment thế nào?</td><td class="answer">Qua Power Platform Admin Center, Type = Developer</td></tr>
+            <tr><td>Tên Environment?</td><td class="answer"><code>PA-Personal-Learning</code></td></tr>
+            <tr><td>Currency?</td><td class="answer">VND</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-label">Lưu ý — key cần nhớ</h3>
+      <div class="key"><span class="tag">KEY</span><p>Nâng cấp gói Microsoft 365 Personal/Family không bao giờ mở khoá được Power Apps — đây là 2 hệ tài khoản (consumer/business) tách biệt hoàn toàn, không phải vấn đề gói thấp/cao.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Nếu dùng M365 Business trial chỉ để lấy tenant, phải tự đặt lịch nhắc hủy trước ngày hết hạn trial để tránh bị tính phí tự động.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Environment loại "Default" (tự sinh sẵn theo tenant) không có Dataverse và không nên dùng cho hệ thống thật — luôn tạo Environment riêng loại Developer/Sandbox/Production.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Nếu chuyển sang thao tác trên tenant công ty, cần quyền Admin để tạo Environment, và cần xác nhận rõ gói Power Apps công ty có Dataverse hay chỉ bản seeded rút gọn.</p></div>
     </section>
 
     <hr class="div">
 
     <section class="buoi" id="buoi-3">
+      <button type="button" class="back-link" onclick="showView('home')">← Quay lại danh sách buổi học</button>
       <div class="buoi-head">
         <span class="buoi-num">Buổi 03</span>
         <h2>Thực hành dựng App 1</h2>
@@ -591,3 +1010,23 @@
     <footer>Cập nhật lần cuối: 2026-07-07 · Lưu tại Personal_Learning/powerapps_automation/</footer>
   </main>
 </div>
+
+<script>
+  function showView(id) {
+    document.querySelectorAll('#home, section.buoi').forEach(function (s) {
+      s.classList.remove('active');
+    });
+    var target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo(0, 0);
+      history.replaceState(null, '', '#' + id);
+    }
+  }
+
+  (function () {
+    var hash = location.hash.replace('#', '');
+    var valid = hash && document.getElementById(hash) && (hash === 'home' || hash.indexOf('buoi-') === 0);
+    showView(valid ? hash : 'home');
+  })();
+</script>
