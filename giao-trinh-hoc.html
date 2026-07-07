@@ -1,0 +1,593 @@
+<title>Giáo trình Power Platform</title>
+<style>
+  :root {
+    --bg: #f5f4f1;
+    --surface: #ffffff;
+    --text: #1d2024;
+    --text-muted: #62676e;
+    --text-faint: #9297a0;
+    --accent: #5b4ee0;
+    --accent-ink: #443aad;
+    --accent-soft: #edebfb;
+    --border: #e2e0da;
+    --warn: #a15a0a;
+    --warn-soft: #faf0dc;
+    --warn-border: #edd9ab;
+    --decide-soft: #eef3ef;
+    --decide-border: #cfe0d4;
+    --decide-ink: #2f6b46;
+    --rule-serif: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --rule-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --rule-mono: "Cascadia Mono", "Consolas", "SFMono-Regular", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17181b;
+      --surface: #1f2125;
+      --text: #e7e6e2;
+      --text-muted: #a2a6ab;
+      --text-faint: #6d7278;
+      --accent: #9b90ff;
+      --accent-ink: #c4bcff;
+      --accent-soft: #26243d;
+      --border: #313339;
+      --warn: #e0a852;
+      --warn-soft: #2e2717;
+      --warn-border: #4a3c1f;
+      --decide-soft: #1c2b21;
+      --decide-border: #2d4536;
+      --decide-ink: #7fcf9a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17181b;
+    --surface: #1f2125;
+    --text: #e7e6e2;
+    --text-muted: #a2a6ab;
+    --text-faint: #6d7278;
+    --accent: #9b90ff;
+    --accent-ink: #c4bcff;
+    --accent-soft: #26243d;
+    --border: #313339;
+    --warn: #e0a852;
+    --warn-soft: #2e2717;
+    --warn-border: #4a3c1f;
+    --decide-soft: #1c2b21;
+    --decide-border: #2d4536;
+    --decide-ink: #7fcf9a;
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f4f1;
+    --surface: #ffffff;
+    --text: #1d2024;
+    --text-muted: #62676e;
+    --text-faint: #9297a0;
+    --accent: #5b4ee0;
+    --accent-ink: #443aad;
+    --accent-soft: #edebfb;
+    --border: #e2e0da;
+    --warn: #a15a0a;
+    --warn-soft: #faf0dc;
+    --warn-border: #edd9ab;
+    --decide-soft: #eef3ef;
+    --decide-border: #cfe0d4;
+    --decide-ink: #2f6b46;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--rule-sans);
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 250px minmax(0, 720px);
+    gap: 56px;
+    padding: 56px 32px 120px;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; padding: 32px 20px 80px; }
+    .toc { position: static !important; order: 2; }
+  }
+
+  /* ---- Sidebar / TOC ---- */
+  .toc {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .toc-kicker {
+    font-family: var(--rule-mono);
+    font-size: 11px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .toc-title {
+    font-family: var(--rule-serif);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 4px 0 0;
+    text-wrap: balance;
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    border-left: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toc-list a {
+    display: block;
+    padding: 9px 0 9px 16px;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .toc-list a:hover { color: var(--text); border-left-color: var(--text-faint); }
+  .toc-list .num {
+    font-family: var(--rule-mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-right: 8px;
+  }
+  .toc-list .pending { color: var(--text-faint); font-style: italic; }
+
+  .toc-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .toc-meta strong { color: var(--text); font-weight: 600; }
+
+  /* ---- Main column ---- */
+  main { min-width: 0; }
+
+  .doc-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-kicker {
+    font-family: var(--rule-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+  .doc-title {
+    font-family: var(--rule-serif);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.15;
+    margin: 10px 0 14px;
+    text-wrap: balance;
+  }
+  .doc-sub {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 62ch;
+  }
+
+  section.buoi {
+    margin-bottom: 64px;
+    scroll-margin-top: 32px;
+  }
+
+  .buoi-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .buoi-num {
+    font-family: var(--rule-serif);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 3px 13px;
+    white-space: nowrap;
+  }
+  .buoi-head h2 {
+    font-family: var(--rule-serif);
+    font-weight: 700;
+    font-size: 27px;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3.block-label {
+    font-family: var(--rule-mono);
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 30px 0 14px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+  }
+  .card h4 {
+    font-size: 16px;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .card p { margin: 0; color: var(--text); }
+  .card p + p { margin-top: 8px; }
+
+  p { max-width: 68ch; }
+  .card p, .card li { max-width: 62ch; }
+
+  code {
+    font-family: var(--rule-mono);
+    font-size: 0.88em;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* ---- Đúc kết table ---- */
+  .decide-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--decide-soft);
+    border: 1px solid var(--decide-border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 15px;
+  }
+  .decide-table th, .decide-table td {
+    text-align: left;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--decide-border);
+  }
+  .decide-table th {
+    font-family: var(--rule-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--decide-ink);
+    background: transparent;
+  }
+  .decide-table tr:last-child td { border-bottom: none; }
+  .decide-table td.answer { color: var(--decide-ink); font-weight: 700; }
+
+  /* ---- Lưu ý callouts ---- */
+  .key {
+    display: flex;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--warn-soft);
+    border: 1px solid var(--warn-border);
+    border-left: 3px solid var(--warn);
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .key .tag {
+    flex: none;
+    font-family: var(--rule-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    color: var(--warn);
+    padding-top: 2px;
+  }
+  .key p { margin: 0; font-size: 15px; }
+  .key p + p { margin-top: 6px; }
+
+  .empty {
+    font-style: italic;
+    color: var(--text-faint);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  /* ---- Diagrams ---- */
+  .diagram { margin: 2px 0 16px; }
+  .diagram-frame {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px 10px;
+    overflow-x: auto;
+  }
+  .diagram svg { width: 100%; height: auto; display: block; min-width: 480px; }
+  .diagram-cap {
+    margin: 8px 2px 0;
+    font-size: 12.5px;
+    color: var(--text-faint);
+    font-style: italic;
+  }
+  .dg-box { fill: var(--surface); stroke: var(--border); stroke-width: 1.5; }
+  .dg-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+  .dg-outer { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 5; }
+  .dg-label { font-family: var(--rule-sans); font-size: 13px; fill: var(--text); }
+  .dg-label-strong {
+    font-family: var(--rule-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    fill: var(--accent-ink);
+    text-transform: uppercase;
+  }
+  .dg-muted { font-family: var(--rule-sans); font-size: 11px; fill: var(--text-faint); }
+  .dg-line { stroke: var(--text-faint); stroke-width: 1.6; fill: none; }
+  .dg-line-ok { stroke: var(--decide-ink); stroke-width: 2; fill: none; }
+  .dg-dash { stroke-dasharray: 5 5; stroke: var(--text-faint); stroke-width: 1.6; fill: none; }
+  .dg-x { stroke: var(--warn); stroke-width: 2.2; }
+  .dg-tag-ok {
+    font-family: var(--rule-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    fill: var(--decide-ink);
+  }
+  .dg-tag-warn {
+    font-family: var(--rule-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    fill: var(--warn);
+  }
+
+  hr.div {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 13px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section.buoi { transition: none; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="dgArrowMuted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--text-faint)"></path>
+    </marker>
+    <marker id="dgArrowOk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--decide-ink)"></path>
+    </marker>
+  </defs>
+</svg>
+
+<div class="shell">
+  <nav class="toc">
+    <div>
+      <div class="toc-kicker">Tài liệu học</div>
+      <p class="toc-title">Power Platform<br>cho người xây hệ thống</p>
+    </div>
+    <ul class="toc-list">
+      <li><a href="#buoi-1"><span class="num">01</span>Khái niệm nền</a></li>
+      <li><a href="#buoi-2"><span class="num">02</span>Thiết lập nền tảng<span class="pending"> — chưa học</span></a></li>
+      <li><a href="#buoi-3"><span class="num">03</span>Dựng App 1<span class="pending"> — chưa học</span></a></li>
+    </ul>
+    <div class="toc-meta">
+      <strong>Định hướng đã chốt:</strong> Canvas app + Dataverse (Developer Plan, miễn phí) + Power Automate cho logic. Timeline 7 ngày.
+    </div>
+  </nav>
+
+  <main>
+    <header class="doc-header">
+      <div class="doc-kicker">Giáo trình — Ngân</div>
+      <h1 class="doc-title">Power Platform, từ số 0 đến hệ thống thật</h1>
+      <p class="doc-sub">Tài liệu đọc lại/ôn tập — tách riêng khỏi BRIEF.md (dùng để theo dõi tiến độ dự án). Mỗi buổi gồm ba phần: Nội dung, Đúc kết, và Lưu ý cần nhớ.</p>
+    </header>
+
+    <section class="buoi" id="buoi-1">
+      <div class="buoi-head">
+        <span class="buoi-num">Buổi 01</span>
+        <h2>Khái niệm nền</h2>
+      </div>
+
+      <h3 class="block-label">Nội dung</h3>
+
+      <div class="card">
+        <h4>Environment</h4>
+        <p>Một "hộp" độc lập chứa Apps, Flows, kết nối, và dữ liệu (nếu dùng Dataverse) — giống một database instance riêng biệt, tách biệt với các project khác.</p>
+        <div class="diagram">
+          <div class="diagram-frame">
+            <svg viewBox="0 0 640 190" role="img" aria-label="Environment là 1 hộp chứa Apps, Flows và Data">
+              <rect class="dg-outer" x="14" y="16" width="612" height="158" rx="14"></rect>
+              <text class="dg-label-strong" x="320" y="38" text-anchor="middle">Environment · PA-Personal-Learning</text>
+              <rect class="dg-box-accent" x="40" y="62" width="168" height="92" rx="10"></rect>
+              <text class="dg-label" x="124" y="102" text-anchor="middle">Apps</text>
+              <text class="dg-muted" x="124" y="120" text-anchor="middle">Canvas app</text>
+              <rect class="dg-box-accent" x="236" y="62" width="168" height="92" rx="10"></rect>
+              <text class="dg-label" x="320" y="102" text-anchor="middle">Flows</text>
+              <text class="dg-muted" x="320" y="120" text-anchor="middle">Power Automate</text>
+              <rect class="dg-box-accent" x="432" y="62" width="168" height="92" rx="10"></rect>
+              <text class="dg-label" x="516" y="102" text-anchor="middle">Data</text>
+              <text class="dg-muted" x="516" y="120" text-anchor="middle">Dataverse</text>
+            </svg>
+          </div>
+          <p class="diagram-cap">Viền nét đứt = ranh giới Environment. Đổi tenant nghĩa là phải dựng lại cả 3 khối bên trong ở một hộp mới.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Canvas app so với Model-driven app</h4>
+        <p><strong>Canvas:</strong> tự kéo-thả, toàn quyền layout và màu sắc — như tự viết HTML/CSS.</p>
+        <p><strong>Model-driven:</strong> định nghĩa data trước, giao diện tự sinh theo khuôn mẫu có sẵn — nhanh nhưng không tự do về hình thức.</p>
+        <div class="diagram">
+          <div class="diagram-frame">
+            <svg viewBox="0 0 640 210" role="img" aria-label="So sánh Canvas app tự do vị trí và Model-driven tự sinh theo khuôn mẫu">
+              <rect class="dg-box" x="16" y="16" width="280" height="164" rx="10"></rect>
+              <text class="dg-label-strong" x="156" y="38" text-anchor="middle">Canvas — tự đặt vị trí</text>
+              <rect class="dg-box-accent" x="40" y="58" width="90" height="26" rx="6" transform="rotate(-4 85 71)"></rect>
+              <circle class="dg-box-accent" cx="230" cy="80" r="26"></circle>
+              <rect class="dg-box-accent" x="60" y="120" width="150" height="18" rx="9" transform="rotate(3 135 129)"></rect>
+              <rect class="dg-box-accent" x="150" y="150" width="70" height="18" rx="9"></rect>
+
+              <rect class="dg-box" x="344" y="16" width="280" height="164" rx="10"></rect>
+              <text class="dg-label-strong" x="484" y="38" text-anchor="middle">Model-driven — theo khuôn mẫu</text>
+              <rect class="dg-box-accent" x="364" y="56" width="240" height="20" rx="4"></rect>
+              <rect class="dg-box-accent" x="364" y="82" width="240" height="20" rx="4"></rect>
+              <rect class="dg-box-accent" x="364" y="108" width="240" height="20" rx="4"></rect>
+              <rect class="dg-box-accent" x="364" y="134" width="240" height="20" rx="4"></rect>
+            </svg>
+          </div>
+          <p class="diagram-cap">Canvas: mỗi phần tử đặt tự do theo ý muốn. Model-driven: hàng nào cũng đồng dạng, sinh tự động từ schema — không chỉnh được vị trí riêng lẻ.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>SharePoint List so với Dataverse</h4>
+        <p><strong>List:</strong> giống một sheet Excel có kiểu cột cố định. Giới hạn: 5000 dòng mỗi view, không JOIN thật giữa các bảng, không ràng buộc toàn vẹn dữ liệu.</p>
+        <p><strong>Dataverse:</strong> database quan hệ thật — có relationship, cascade rule, business rule tập trung một nơi, không có trần số dòng cứng. Cần license riêng, hoặc dùng Developer Plan miễn phí cho quy mô cá nhân.</p>
+        <div class="diagram">
+          <div class="diagram-frame">
+            <svg viewBox="0 0 640 200" role="img" aria-label="List dùng lookup rời rạc không ràng buộc, Dataverse dùng relationship thật có cascade">
+              <text class="dg-label-strong" x="150" y="24" text-anchor="middle">SharePoint List</text>
+              <rect class="dg-box" x="30" y="40" width="120" height="52" rx="8"></rect>
+              <text class="dg-label" x="90" y="70" text-anchor="middle">List: Hợp đồng</text>
+              <rect class="dg-box" x="210" y="40" width="120" height="52" rx="8"></rect>
+              <text class="dg-label" x="270" y="70" text-anchor="middle">List: Chứng từ</text>
+              <path class="dg-dash" d="M150,66 H210" marker-end="url(#dgArrowMuted)"></path>
+              <line class="dg-x" x1="172" y1="56" x2="188" y2="76"></line>
+              <line class="dg-x" x1="188" y1="56" x2="172" y2="76"></line>
+              <text class="dg-tag-warn" x="180" y="104" text-anchor="middle">Lookup — không ràng buộc</text>
+
+              <line x1="368" y1="16" x2="368" y2="190" class="dg-line" stroke-dasharray="3 6"></line>
+
+              <text class="dg-label-strong" x="500" y="24" text-anchor="middle">Dataverse</text>
+              <rect class="dg-box" x="400" y="40" width="120" height="52" rx="8"></rect>
+              <text class="dg-label" x="460" y="70" text-anchor="middle">Table: Hợp đồng</text>
+              <rect class="dg-box" x="580" y="40" width="0" height="52" rx="8" style="visibility:hidden"></rect>
+              <rect class="dg-box" x="480" y="128" width="140" height="52" rx="8"></rect>
+              <text class="dg-label" x="550" y="158" text-anchor="middle">Table: Chứng từ</text>
+              <path class="dg-line-ok" d="M470,92 C470,120 500,110 520,128" marker-end="url(#dgArrowOk)"></path>
+              <text class="dg-tag-ok" x="530" y="112" text-anchor="middle">1 – N · cascade</text>
+            </svg>
+          </div>
+          <p class="diagram-cap">List: hai bảng chỉ nối bằng con số ID tham chiếu rời — xóa gốc thì bảng con vẫn trỏ tới ID đã chết. Dataverse: quan hệ thật, xóa/khóa được cấu hình cascade theo ý muốn.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Power Automate và Connector</h4>
+        <p>Power Apps là tầng giao diện. Power Automate là tầng logic — xử lý sự kiện, tính toán, gửi thông báo, phê duyệt. Connector là "driver" kết nối tới một nguồn dữ liệu hoặc dịch vụ.</p>
+        <p>Nguyên tắc áp dụng: mọi tính toán hoặc điều kiện phức tạp đặt trong Flow, không nhồi vào công thức của Power Apps.</p>
+        <div class="diagram">
+          <div class="diagram-frame">
+            <svg viewBox="0 0 700 150" role="img" aria-label="Luồng kiến trúc Power Apps giao diện, Power Automate logic, Connector, Dataverse dữ liệu">
+              <rect class="dg-box-accent" x="10" y="46" width="140" height="58" rx="10"></rect>
+              <text class="dg-label" x="80" y="72" text-anchor="middle">Power Apps</text>
+              <text class="dg-muted" x="80" y="90" text-anchor="middle">Giao diện (UI)</text>
+
+              <path class="dg-line" d="M150,75 H190" marker-end="url(#dgArrowMuted)"></path>
+
+              <rect class="dg-box-accent" x="192" y="46" width="150" height="58" rx="10"></rect>
+              <text class="dg-label" x="267" y="72" text-anchor="middle">Power Automate</text>
+              <text class="dg-muted" x="267" y="90" text-anchor="middle">Logic / phê duyệt</text>
+
+              <path class="dg-line" d="M342,75 H382" marker-end="url(#dgArrowMuted)"></path>
+
+              <rect class="dg-box" x="384" y="46" width="120" height="58" rx="10"></rect>
+              <text class="dg-label" x="444" y="72" text-anchor="middle">Connector</text>
+              <text class="dg-muted" x="444" y="90" text-anchor="middle">Driver kết nối</text>
+
+              <path class="dg-line" d="M504,75 H544" marker-end="url(#dgArrowMuted)"></path>
+
+              <rect class="dg-box-accent" x="546" y="46" width="140" height="58" rx="10"></rect>
+              <text class="dg-label" x="616" y="72" text-anchor="middle">Dataverse</text>
+              <text class="dg-muted" x="616" y="90" text-anchor="middle">Dữ liệu</text>
+
+              <text class="dg-tag-ok" x="350" y="128" text-anchor="middle">Tính toán phức tạp thuộc về khối này — không viết ở Power Apps</text>
+            </svg>
+          </div>
+          <p class="diagram-cap">Tách lớp: Power Apps chỉ hiển thị, Power Automate xử lý logic, Connector là cầu nối kỹ thuật tới Dataverse.</p>
+        </div>
+      </div>
+
+      <h3 class="block-label">Đúc kết</h3>
+      <div class="table-wrap">
+        <table class="decide-table">
+          <thead><tr><th>Câu hỏi</th><th>Quyết định</th></tr></thead>
+          <tbody>
+            <tr><td>Canvas hay Model-driven?</td><td class="answer">Canvas</td></tr>
+            <tr><td>Data ở đâu?</td><td class="answer">Dataverse</td></tr>
+            <tr><td>Logic phức tạp viết ở đâu?</td><td class="answer">Power Automate Flow</td></tr>
+            <tr><td>Gói Microsoft cần?</td><td class="answer">Power Apps Developer Plan — miễn phí</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-label">Lưu ý — key cần nhớ</h3>
+
+      <div class="key"><span class="tag">KEY</span><p>Environment là ranh giới bảo mật và ranh giới migrate — quyết định cái gì mất, cái gì giữ được khi đổi tenant sau này.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Mỗi Table phải có một cột mã nghiệp vụ riêng làm khóa (ví dụ <code>ContractCode</code>), không dựa vào ID nội bộ hệ thống — ID sẽ đổi khi dựng lại ở tenant khác.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>SharePoint List giới hạn cứng 5000 dòng mỗi view, không nới được — lý do chính để chọn Dataverse cho một hệ thống thật.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Không hard-code Site hoặc Environment URL trong công thức — luôn thao tác qua Data source đã khai báo.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Microsoft 365 Copilot không liên quan đến Power Apps hay Dataverse — không cần mua. "Copilot trong Power Apps Studio" là tính năng AI có sẵn trong sản phẩm, hoàn toàn khác.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>AI Builder credits (nếu dùng tính năng đọc ảnh, PDF tự động...) tính phí riêng, tách biệt khỏi mọi thứ ở trên.</p></div>
+      <div class="key"><span class="tag">KEY</span><p>Phân quyền user phải thiết lập từ đầu, không vá sau: khi một người bấm "Refresh" trên file Excel export, hệ thống dùng chính quyền của người đó gọi lại Dataverse — nếu chưa được cấp quyền, refresh lỗi, thường không rõ nguyên nhân.</p></div>
+    </section>
+
+    <hr class="div">
+
+    <section class="buoi" id="buoi-2">
+      <div class="buoi-head">
+        <span class="buoi-num">Buổi 02</span>
+        <h2>Thiết lập nền tảng</h2>
+      </div>
+      <p class="empty">Chưa học — sẽ điền Nội dung / Đúc kết / Lưu ý sau khi hoàn thành buổi này.</p>
+    </section>
+
+    <hr class="div">
+
+    <section class="buoi" id="buoi-3">
+      <div class="buoi-head">
+        <span class="buoi-num">Buổi 03</span>
+        <h2>Thực hành dựng App 1</h2>
+      </div>
+      <p class="empty">Chưa học — sẽ điền Nội dung / Đúc kết / Lưu ý sau khi hoàn thành buổi này.</p>
+    </section>
+
+    <footer>Cập nhật lần cuối: 2026-07-07 · Lưu tại Personal_Learning/powerapps_automation/</footer>
+  </main>
+</div>
